@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HOSPITAL</title>
+    
+    {# Cargamos la librería #} 
+    {% load bootstrap4 %} 
+    
+    {# Archivos estáticos #}
+    {% load static %}
+
+    {# CSS Bootstrap #} 
+    {% bootstrap_css %}
+</head>
+<body>
+    <div align="left" class="btn_crear mb-3">
+        <a href="{% url 'crear' %}" type="button" class="btn btn-primary">Crear</a> 
+    </div>
+    
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th width="35%">Nombre</th>
+                <th>Especialidad</th>
+                <th>Edad</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Medico in object_list %}
+            <tr>
+                <td>{{ Medico.nombre }}</td>
+                <td>{{ Medico.Especialidad }}</td>
+                <td>{{ Medico.edad }}</td>
+                <td><img src="{% static 'uploads/' %}{{ arepas.img }}" alt="{{ Medico.nombre }}" class="img-fluid" width="7%"></td>
+                <td>
+                    <form method="POST" action="{% url 'eliminar' Medico.id %}">
+                        {% csrf_token %}
+                        <div class="btn-group">
+                            <a href="{% url 'detalle' Medico.id %}" title="Ver" type="button" class="btn btn-success">Ver</a>
+                            <a href="{% url 'editar' Medico.id %}" title="Editar" type="button" class="btn btn-primary">Editar</a>
+                            <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
+                        </div>
+                    </form>  
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    {# JS y jQuery Bootstrap #}
+    {% bootstrap_javascript jquery='full' %} 
+</body>
+</html>
