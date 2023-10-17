@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t+r79u*q)wvscscw+dyni33^eou0=j=rz550k%#n#i8$7%!z)k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*','127.0.0.1']
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'ProyectoLAB3.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,7 +87,7 @@ DATABASES = {
     'default': 
     {
         'ENGINE' : 'django.db.backends.postgresql_psycopg2',
-        'NAME' : 'postgres',
+        'NAME' : 'productos',
         'USER' : 'root',
         'PASSWORD' : 'root',
         'HOST' : 'localhost',
@@ -131,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Las rutas para las imágenes de cada registro o arepas 
-MEDIA_URL = '/arepas/'
+MEDIA_URL = '/Hospi/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Hospi/static/uploads')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'

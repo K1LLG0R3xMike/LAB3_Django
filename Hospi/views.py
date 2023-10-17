@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
  
 from .models import Medico
  
-from django.urls import reverse
+from django.urls import reverse_lazy
  
 from django.contrib import messages
   
@@ -13,20 +13,20 @@ from django.contrib.messages.views import SuccessMessageMixin
  
 from django import forms
 
+class HomeView(ListView):
+    model = Medico
+    template_name = 'index.html'
 
 class MedicoListado(ListView):
-    model = Medico  
+    model = Medico
+    template_name = 'Medico_listado.html'
 
 class MedicoCrear(SuccessMessageMixin, CreateView):
     model = Medico 
-    form = Medico 
     fields = "__all__" 
-    success_message = 'Medico Creada Correctamente!' 
-        
-    
-    def get_success_url(self):
-        return reverse('leer')
-
+    template_name = 'Medico_crear.html'
+    success_url = reverse_lazy('Medico_listado')
+ 
 class MedicoDetalle(DetailView): 
     model = Medico  
 
@@ -34,20 +34,13 @@ class MedicoDetalle(DetailView):
 class MedicoActualizar(SuccessMessageMixin, UpdateView): 
     model = Medico  
     form = Medico 
-    fields = "__all__"  
-    success_message = 'Medico Actualizada Correctamente !'
-    
-    
-    def get_success_url(self):               
-        return reverse('leer') 
+    fields = "__all__"
+    template_name = 'Medico_actualizar.html'
+    success_url = reverse_lazy('Medico_actualizar') 
 
 class MedicoEliminar(SuccessMessageMixin, DeleteView): 
     model = Medico 
     form = Medico
-    fields = "__all__"     
-    
-        
-    def get_success_url(self): 
-        success_message = 'Medico Eliminada Correctamente !'  
-        messages.success (self.request, (success_message))       
-        return reverse('leer') 
+    fields = "__all__" 
+    template_name = 'Medico_eliminar.html'
+    success_url = reverse_lazy('Medico_eliminar') 

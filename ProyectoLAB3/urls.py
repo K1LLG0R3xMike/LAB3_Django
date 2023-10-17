@@ -16,24 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from  Hospi.views import MedicoListado,MedicoDetalle,Medico,MedicoActualizar,MedicoCrear,MedicoEliminar
-
+from  Hospi.views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
-    path('Hospital/', MedicoListado.as_view(template_name = "templates/index.html"), name='leer'),
 
-    
-    path('Medico/detalle/<int:pk>', MedicoDetalle.as_view(template_name = "templates/detalles.html"), name='detalles'),
+    path('' , HomeView.as_view(), name = 'index'),
 
+    path('Hospi/' , HomeView.as_view(), name = 'index'), 
+    
+    path('Medico/Listado', MedicoListado.as_view(), name='Medico_listado'),
+
+    path('Medico/detalle/<int:pk>', MedicoDetalle.as_view(), name='Medico_detalles'),
      
-    path('Medico/crear', MedicoCrear.as_view(template_name = "templates/crear.html"), name='crear'),
+    path('Medico/', MedicoCrear.as_view(), name='Medico_crear'),
 
-    
-    path('Medico/editar/<int:pk>', MedicoActualizar.as_view(template_name = "templates/actualizar.html"), name='actualizar'), 
+    path('Medico/editar/', MedicoActualizar.as_view(), name='Medico_actualizar'), 
 
+    path('Medico/eliminar/', MedicoEliminar.as_view(), name='Medico_eliminar'),   
+
+    ]
     
-    path('Medico/eliminar/<int:pk>', MedicoEliminar.as_view(), name='eliminar'),   
-]
