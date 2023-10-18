@@ -2,9 +2,11 @@
 <html lang="es">
 
 <head>
+    <link rel="icon" href="MEDCALL.jpg" type="image/x-icon">
+    <link rel="icon" href="MEDCALL.jpg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOSPITAL</title>
+    <title>MEDICALL</title>
     
     <!-- Incluimos Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -73,12 +75,17 @@
 <body>
 
 <header class="container-fluid">
-    <h1>HOSPITAL</h1>
+    <h1>MEDICALL</h1>
     <nav>
         <ul>
             
             <li><a href="{% url 'Medico_listado' %}">LISTADO DE MEDICOS</a></li>
+            <li><a href="{% url 'paciente_list' %}">LISTADO DE PACIENTES</a></li>
+            <li><a href="{% url 'medicamentos_list' %}">LISTADO DE MEDICAMENTOS</a></li>
             <li><a href="{% url 'Medico_crear' %}">CREAR MEDICOS</a></li>
+            <li><a href="{% url 'paciente_create' %}">CREAR PACIENTES</a></li>
+            <li><a href="{% url 'medicamentos_create' %}">CREAR MEDICAMENTOS</a></li>
+            <li><a href="{% url 'info' %}">SOBRE NOSOTROS</a></li>
             
         </ul>
     </nav>
@@ -88,7 +95,20 @@
     
     {% block content %}
     {% endblock %}
+
+    {% block eliminar_content %}
+    {% endblock %}
+
 </main>
+
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <p>&copy; 2023 MEDICALL - Todos los derechos reservados</p>
+        <p>Dirección: Calle Principal, Ciudad</p>
+        <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a></p>
+    </div>
+</footer>
+
 
 <!-- Opcional: Incluir Bootstrap JS y sus dependencias (jQuery y Popper.js) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -96,4 +116,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

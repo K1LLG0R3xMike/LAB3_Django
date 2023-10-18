@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block eliminar_content %}
+    <div class="text-center">
+        <h2>Eliminar Paciente</h2>
+        
+        <p>¿Estás seguro de que deseas eliminar al siguiente paciente?</p>
+        
+        <p>Nombre: {{ paciente.nombre }}</p>
+        <p>cedula: {{ paciente.cedula }}</p>
+        <p>Edad: {{ paciente.edad }}</p>
+        <p>Direccion: {{ paciente.direccion }}</p>
+        <p>Antecedentes: {{ paciente.antecedentes }}</p>
+        <p>Diagnostico: {{ paciente.diagnostico }}</p>
+        <p>Medicacion: {{ paciente.medicacion }}</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Confirmar Eliminación">
+        </form>
+
+        <a href="{% url 'paciente_list' %}">Cancelar</a>
+    </div>
+{% endblock %}

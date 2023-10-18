@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block eliminar_content %}
+    <div class="text-center">
+        <h2>Eliminar Médico</h2>
+        
+        <p>¿Estás seguro de que deseas eliminar al siguiente médico?</p>
+        
+        <p>Nombre: {{ medico.nombre }}</p>
+        <p>Especialidad: {{ medico.especialidad }}</p>
+        <p>Edad: {{ medico.edad }}</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Confirmar Eliminación">
+        </form>
+
+        <a href="{% url 'Medico_listado' %}">Cancelar</a>
+    </div>
+{% endblock %}

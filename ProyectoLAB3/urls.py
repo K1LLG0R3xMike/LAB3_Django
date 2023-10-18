@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path
-from  Hospi.views import *
+from Hospi.views import *
 
 
 urlpatterns = [
@@ -24,17 +25,40 @@ urlpatterns = [
 
     path('' , HomeView.as_view(), name = 'index'),
 
-    path('Hospi/' , HomeView.as_view(), name = 'index'), 
-    
+    path('Hospi/' , HomeView.as_view(), name = 'index'),
+
+    path('Hospi/Info' , HomeView.as_view(), name = 'info'),
+
     path('Medico/Listado', MedicoListado.as_view(), name='Medico_listado'),
 
     path('Medico/detalle/<int:pk>', MedicoDetalle.as_view(), name='Medico_detalles'),
      
     path('Medico/', MedicoCrear.as_view(), name='Medico_crear'),
 
-    path('Medico/editar/', MedicoActualizar.as_view(), name='Medico_actualizar'), 
+    path('Medico/editar/<int:pk>/', MedicoActualizar.as_view(), name='Medico_actualizar'), 
 
-    path('Medico/eliminar/', MedicoEliminar.as_view(), name='Medico_eliminar'),   
+    path('Medico/eliminar/<int:pk>/', MedicoEliminar.as_view(), name='Medico_eliminar'),   
 
+    # URLs para el modelo Pacientes
+    path('pacientes/', PacienteListView.as_view(), name='paciente_list'),
+
+    path('pacientes/<int:pk>/', PacienteDetailView.as_view(), name='paciente_detail'),
+
+    path('pacientes/crear/', PacienteCreateView.as_view(), name='paciente_create'),
+
+    path('pacientes/editar/<int:pk>/', PacienteUpdateView.as_view(), name='paciente_update'),
+
+    path('pacientes/eliminar/<int:pk>/', PacienteDeleteView.as_view(), name='paciente_delete'),
+
+    # URLs para el modelo Medicamentos
+    path('medicamentos/', MedicamentosListView.as_view(), name='medicamentos_list'),
+
+    path('medicamentos/<int:pk>/', MedicamentosDetailView.as_view(), name='medicamentos_detail'),
+
+    path('medicamentos/crear/', MedicamentosCreateView.as_view(), name='medicamentos_create'),
+
+    path('medicamentos/editar/<int:pk>/', MedicamentosUpdateView.as_view(), name='medicamentos_update'),
+
+    path('medicamentos/eliminar/<int:pk>/', MedicamentosDeleteView.as_view(), name='medicamentos_delete'),
     ]
     
