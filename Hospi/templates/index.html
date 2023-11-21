@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <link rel="icon" href="MEDCALL.jpg" type="image/x-icon">
-    <link rel="icon" href="MEDCALL.jpg" type="image/png">
+    <link rel="icon" href="{% static 'images/MEDCALL.jpg' %}" type="image/jpg">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEDICALL</title>
@@ -11,50 +13,63 @@
     <!-- Incluimos Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Estilos personalizados -->
+    <!-- En el head de tu HTML -->
     <style>
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(206, 213, 213), 17, 17 ;
             margin: 0;
             padding: 0;
         }
         
         header {
-            background-color: #343a40;
+            background-color: #000000;
             padding: 20px 0;
-            color: #fff;
+            color: rgb(18, 71, 206);
             text-align: center;
         }
-
+        
         header h1 {
             margin: 0;
             padding: 0;
             font-size: 2em;
         }
 
+        nav {
+            background-color: #000000;
+            
+        }
+        
         nav ul {
             list-style-type: none;
-            margin: 20px 0;
+            margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
+            display:flex;
+            justify-content:flex-start;
         }
-
+        
         nav li {
-            margin-right: 20px;
+            display: inline;
+            margin: 0;
         }
-
+        
         nav a {
-            color: #007bff;
+            color: #5867ef;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease-in-out;
         }
-
+        
         nav a:hover {
             text-decoration: underline;
+            color: #0056b3;
         }
-
+        
+        main {
+            margin-top: 50px;
+        }
+        
         footer {
             background-color: #343a40;
             color: #fff;
@@ -64,36 +79,45 @@
             bottom: 0;
             width: 100%;
         }
-
+        
         footer p {
             margin: 0;
             padding: 0;
         }
+        
+
     </style>
+
+
 </head>
 
 <body>
 
-<header class="container-fluid">
-    <h1>MEDICALL</h1>
-    <nav>
+<header>
+    <div class="container">
+        <h1><img src='{% static "MEDCALL.png" %}' width=50 height=50 >MEDCALL</h1>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
         <ul>
-            
             <li><a href="{% url 'Medico_listado' %}">LISTADO DE MEDICOS</a></li>
             <li><a href="{% url 'paciente_list' %}">LISTADO DE PACIENTES</a></li>
             <li><a href="{% url 'medicamentos_list' %}">LISTADO DE MEDICAMENTOS</a></li>
-            <li><a href="{% url 'Medico_crear' %}">CREAR MEDICOS</a></li>
-            <li><a href="{% url 'paciente_create' %}">CREAR PACIENTES</a></li>
-            <li><a href="{% url 'medicamentos_create' %}">CREAR MEDICAMENTOS</a></li>
+            <li><a href="{% url 'Medico_crear' %}">INGRESAR MEDICOS</a></li>
+            <li><a href="{% url 'paciente_create' %}">INGRESO PACIENTES</a></li>
+            <li><a href="{% url 'medicamentos_create' %}">INGRESO MEDICAMENTOS</a></li>
             <li><a href="{% url 'info' %}">SOBRE NOSOTROS</a></li>
-            
         </ul>
-    </nav>
-</header>
+    </div>
+</nav>
+
 
 <main class="container mt-5">
     
     {% block content %}
+
     {% endblock %}
 
     {% block eliminar_content %}
@@ -101,7 +125,7 @@
 
 </main>
 
-<footer class="bg-dark text-white text-center py-3">
+<!--<footer class="bg-dark text-white text-center py-3">
     <div class="container">
         <p>&copy; 2023 MEDICALL - Todos los derechos reservados</p>
         <p>Dirección: Calle Principal, Ciudad</p>

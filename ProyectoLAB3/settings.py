@@ -130,9 +130,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'Hospi/static'),)
+
 # Las rutas para las imágenes de cada registro o arepas 
 MEDIA_URL = '/Hospi/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'Hospi/static/uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Hospi/static')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Default primary key field type

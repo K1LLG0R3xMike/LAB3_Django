@@ -32,9 +32,9 @@ urlpatterns = [
     path('Medico/Listado', MedicoListado.as_view(), name='Medico_listado'),
 
     path('Medico/detalle/<int:pk>', MedicoDetalle.as_view(), name='Medico_detalles'),
-     
+ 
     path('Medico/', MedicoCrear.as_view(), name='Medico_crear'),
-
+    
     path('Medico/editar/<int:pk>/', MedicoActualizar.as_view(), name='Medico_actualizar'), 
 
     path('Medico/eliminar/<int:pk>/', MedicoEliminar.as_view(), name='Medico_eliminar'),   
